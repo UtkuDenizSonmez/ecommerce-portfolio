@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 from werkzeug.security import check_password_hash, generate_password_hash
 from functools import wraps
 import os
-import re
+
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -16,12 +16,8 @@ Bootstrap(app)
 
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
-uri = os.environ.get("DATABASE_URL")  # or other relevant config var
-if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
-
 # CONNECT DB
-app.config["SQLALCHEMY_DATABASE_URI"] = uri
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///ecommerce.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
@@ -84,7 +80,7 @@ class Purchase(db.Model):
     item = relationship("Item", back_populates="purchase")
 
 
-# db.create_all()
+db.create_all()
 
 
 @app.route("/")
