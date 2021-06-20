@@ -11,7 +11,7 @@ import os
 
 app = Flask(__name__)
 Bootstrap(app)
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY").replace("://", "ql://", 1)
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 # CONNECT DB
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///ecommerce.db")
