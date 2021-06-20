@@ -11,10 +11,10 @@ import os
 
 app = Flask(__name__)
 Bootstrap(app)
-app.config["SECRET_KEY"] = "+%&FDG^+%kj3450edfg546ert^+%dSDŞLF.Sd.FöoşpwerÜÜWErwierlwi"
+app.config["SECRET_KEY"] = "SECRET_KEY"
 
 # CONNECT DB
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///ecommerce.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
