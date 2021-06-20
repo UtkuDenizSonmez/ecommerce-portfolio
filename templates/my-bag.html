@@ -1,0 +1,42 @@
+{% include 'header.html' %}
+{% extends 'base.html' %}
+
+
+{% block title %} My Bag {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% if purchases|length == 0%}
+                <h3 class="empty-cart">Your Cart is currently Empty <br><br><a href="{{ url_for('home') }}">Go shopping</a></h3>
+            {% else %}
+                <table class="table cart-table">
+                    <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Product</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Price</th>
+                      <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for purchase in purchases %}
+                    <tr>
+                      <td class="align-middle"><img class="cart-img" src="{{ purchase.photo_url }}"></td>
+                      <td class="align-middle">{{ purchase.name }}</td>
+                      <td class="align-middle">${{ purchase.price }}</td>
+                      <td class="align-middle"><a href="{{ url_for('delete_from_bag', item_id=purchase.id) }}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                    <tr class="table-primary">
+                      <td>Total</td>
+                      <td></td>
+                      <td>${{ total | round}}</td>
+                      <td></td>
+                    </tr>
+                    </tbody>
+                  </table>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

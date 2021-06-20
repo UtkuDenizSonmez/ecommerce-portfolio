@@ -1,0 +1,50 @@
+{% include 'header.html' %}
+{% extends 'base.html' %}
+
+
+{% block title %} Website Name {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% for item in all_items.items %}
+                <div class="card-deck">
+                    <div class="col sm-12 md-4 lg-3">
+                        <div class="card h-100">
+                            <a href="{{ url_for('selected_item', item_id=item.id) }}"><img src="{{ item.photo_url }}" class="card-img-top">
+                                </a>
+                            <div class="card-body">
+                                <h4 class="card-title">{{item.name}}</h4>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        ${{ item.price }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        {{ item.size }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        {{ item.supply }}
+                                    </li>
+                                </ul>
+                                <div class="card-body">
+                                    {% if item.supply >= 1 %}
+                                        <a href="{{ url_for('add_item_to_bag', item_id=item.id) }}" class="btn btn-primary">To Bag</a>
+                                    {% else %}
+                                        <button class="btn btn-primary" disabled>Not on Stock</button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="paginate-buttons">
+            {% for page in all_items.iter_pages(left_edge=3, right_edge=3) %}
+                {% if page %}
+                    <a class="btn btn-outline-info mb-4" href="{{ url_for('home', page=page) }}">{{ page }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
