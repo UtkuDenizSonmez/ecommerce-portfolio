@@ -16,7 +16,7 @@ Bootstrap(app)
 
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
-uri = os.environ.get("DATABASE_URL")  # or other relevant config var
+uri = os.environ.get("DATABASE_URL", "sqlite:///ecommerce.db")
 if uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://", 1)
 
