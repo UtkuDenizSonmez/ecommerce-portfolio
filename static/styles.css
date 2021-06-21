@@ -61,6 +61,7 @@ body {
 }
 
 
+
 .selected-item, .flash-message {
     text-align: center;
     margin-left: 20%;
@@ -93,3 +94,8 @@ body {
     border-radius: 50%;
 }
 
+@media only screen and (max-width: 691px){
+    .container {
+        margin-left: 5rem;
+    }
+}

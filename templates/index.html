@@ -9,7 +9,7 @@
         <div class="row">
             {% for item in all_items.items %}
                 <div class="card-deck">
-                    <div class="col sm-12 md-4 lg-3">
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
                         <div class="card h-100">
                             <a href="{{ url_for('selected_item', item_id=item.id) }}"><img src="{{ item.photo_url }}" class="card-img-top">
                                 </a>
