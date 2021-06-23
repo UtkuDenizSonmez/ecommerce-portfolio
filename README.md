@@ -1,3 +1,4 @@
 # ecommerce-portfolio
-Simple Ecommerce Website With Python-Flask &amp; SQLAlchemy\n
-Website URI = https://ecommerce-website-flask.herokuapp.com/
+Simple Ecommerce Website With Python-Flask &amp; SQLAlchemy
+
+Website URL = https://ecommerce-website-flask.herokuapp.com/
