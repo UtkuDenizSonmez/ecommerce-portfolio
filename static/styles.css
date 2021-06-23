@@ -96,6 +96,7 @@ body {
 
 @media only screen and (max-width: 691px){
     .container {
-        margin-left: 5rem;
+        width: 50%;
+        margin: auto;
     }
 }
