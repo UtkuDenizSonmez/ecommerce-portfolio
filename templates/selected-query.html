@@ -14,21 +14,16 @@
                             <a href="{{ url_for('selected_item', item_id=item.id) }}"><img src="{{ '../' + item.photo_url }}" class="card-img-top">
                                 </a>
                             <div class="card-body">
-                                <h4 class="card-title">{{item.name}}</h4>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        ${{ item.price }}
-                                    </li>
-                                    <li class="list-group-item">
-                                        {{ item.size }}
-                                    </li>
-                                    <li class="list-group-item">
-                                        {{ item.supply }}
-                                    </li>
-                                </ul>
                                 <div class="card-body">
                                     {% if item.supply >= 1%}
-                                        <a href="#" class="btn btn-primary">To Bag</a>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <p class="price-text"> ${{ item.price }} <p>
+                                            </div>
+                                            <div class="col-sm">
+                                                <a href="{{ url_for('add_item_to_bag', item_id=item.id) }}"><i class="fas fa-shopping-cart fa-2x"></i></a>
+                                            </div>
+                                        </div>
                                     {% else %}
                                         <button class="btn btn-primary" disabled>Not on Stock</button>
                                     {% endif %}

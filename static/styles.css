@@ -67,7 +67,7 @@ body {
     margin-left: 20%;
 }
 
-.flash-message {
+.flash-message, .price-text {
     text-size: 3.5rem;
     color: #232323;
     font-family: 'Cinzel', serif;
@@ -99,4 +99,17 @@ body {
         width: 50%;
         margin: auto;
     }
+}
+
+.fa-2x {
+    color: #171717;
+    transform: rotate(25deg);
+}
+
+.fa-2x:hover {
+    color: #0A1931;
+}
+
+.price-and-add-cart {
+    display: inline;
 }

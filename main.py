@@ -14,7 +14,8 @@ app = Flask(__name__)
 Bootstrap(app)
 
 
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+# app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+app.config["SECRET_KEY"] = "213123123sdfgdrgerşierwlşiwüüü,,ü"
 
 uri = os.environ.get("DATABASE_URL", "sqlite:///ecommerce.db")
 if uri.startswith("postgres://"):
@@ -134,6 +135,7 @@ def add_item_to_bag():
                 # item.supply -= 1
             db.session.add(purchase)
             db.session.commit()
+            flash("Thanks for shopping!")
             return redirect(url_for("home"))
         flash("Sorry, that product has already in your cart.", "error")
         return redirect(url_for("home"))
